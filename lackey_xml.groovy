@@ -42,7 +42,6 @@ class lackeyXmlFile {
 			if (line =~/Command:/) {
 				writer.write("<application command=\"")
 				def cmdStr = line =~ /(\w)+$/
-				println "And the command is ${cmdStr[0][0]}"
 				writer.write("${cmdStr[0][0]}\"/>\n")
 			}
 			if (!(line =~ /^==/)) {
@@ -65,7 +64,6 @@ class lackeyXmlFile {
 	void writeAddressSize(String line, FileWriter writer)
 	{
 		def aStr = line =~/(\w*),(\w*)$/
-		println "Match is ${aStr[0]}"
 		writer.write(" address=\"0x${aStr[0][1]}\" size=\"0x${aStr[0][2]}\"") 
 		writer.write("/>\n")
 	}
