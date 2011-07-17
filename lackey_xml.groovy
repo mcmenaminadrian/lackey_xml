@@ -1,14 +1,13 @@
 /**
  * 
- * @author Adrian McMenamin
- * Licensed under FSF GPL version 2 or any later version
+ * @author Adrian McMenamin, copyright 2011
  */
 class lackeyXmlFile {
 
 	/**
-	 * Will generate an output file name
+	 * Will automatically generate an output file name
 	 * 
-	 * @param inFile name or path of raw Valgrind Lackey output
+	 * @param inFile  name or path of raw Valgrind Lackey output
 	 */
 	lackeyXmlFile(String inFile) {
 		def dateStr = new Date().time.toString()
@@ -24,7 +23,7 @@ class lackeyXmlFile {
 	}
 	/**
 	 * Writes DTD for lackeyml file and manages processing of raw file -
-	 * calling the appropriate write... method on each line in turn
+	 * calling the appropriate write method on each line in turn
 	 * @param iFile name or path of the input file
 	 * @param oFile name or path of the output file
 	 */
@@ -83,6 +82,7 @@ class lackeyXmlFile {
 		writer.close()	
 	}
 	/**
+	 * Called by write methods:
 	 * Writes out address and size attributes and closes xml element
 	 * @param line
 	 * @param writer
@@ -95,7 +95,7 @@ class lackeyXmlFile {
 	}
 	
 	/**
-	 * Opens an instruction xml element
+	 * Called by processXML: opens an instruction xml element
 	 * @param line
 	 * @param writer
 	 */
@@ -106,7 +106,7 @@ class lackeyXmlFile {
 	}
 	
 	/**
-	 * Opens a store xml element
+	 * Called by processXML: opens a store xml element
 	 * @param line
 	 * @param writer
 	 */
@@ -117,7 +117,7 @@ class lackeyXmlFile {
 	}
 	
 	/**
-	 * Opens a load xml element
+	 * Called by processXML: opens a load xml element
 	 * @param line
 	 * @param writer
 	 */
@@ -128,7 +128,7 @@ class lackeyXmlFile {
 	}
 	
 	/**
-	 * Opens a modify xml element
+	 * Called by processXML: opens a modify xml element
 	 * @param line
 	 * @param writer
 	 */
