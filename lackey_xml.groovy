@@ -90,7 +90,9 @@ class lackeyXmlFile {
 	void writeAddressSize(String line, FileWriter writer)
 	{
 		def aStr = line =~/(\w*),(\w*)$/
-		writer.write(" address=\"0x${aStr[0][1]}\" size=\"0x${aStr[0][2]}\"") 
+		if (aStr && aStr[0].size() >= 3)
+			writer.write(
+				" address=\"0x${aStr[0][1]}\" size=\"0x${aStr[0][2]}\"") 
 		writer.write("/>\n")
 	}
 	
