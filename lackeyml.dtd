@@ -1,0 +1,19 @@
+<!DOCTYPE lackeyml [
+<!ELEMENT lackeyml(application,(instruction|store|load|modify)*)>
+<!ATTLIST lackeyml version CDATA #FIXED 0.1>
+<!ATTLIST lackeyml xmlns CDATA #FIXED "http://cartesianproduct.wordpress.com">
+<!ELEMENT application EMPTY>
+<!ATTLIST application command CDATA #REQUIRED>
+<!ELEMENT instruction EMPTY>
+<!ATTLIST instruction address CDATA #REQUIRED>
+<!ATTLIST instruction size CDATA #REQUIRED>
+<!ELEMENT modify EMPTY>
+<!ATTLIST modify address CDATA #REQUIRED>
+<!ATTLIST modify size CDATA #REQUIRED>
+<!ELEMENT store EMPTY>
+<!ATTLIST store address CDATA #REQUIRED>
+<!ATTLIST store size CDATA #REQUIRED>
+<!ELEMENT load EMPTY>
+<!ATTLIST load address CDATA #REQUIRED>
+<!ATTLIST load size CDATA #REQUIRED>
+]>
