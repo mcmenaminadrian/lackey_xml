@@ -1,15 +1,33 @@
-
+/**
+ * 
+ * @author Adrian McMenamin
+ * Licensed under FSF GPL version 2 or any later version
+ */
 class lackeyXmlFile {
 
+	/**
+	 * Will generate an output file name
+	 * 
+	 * @param inFile name or path of raw Valgrind Lackey output
+	 */
 	lackeyXmlFile(String inFile) {
 		def dateStr = new Date().time.toString()
 		processXml(inFile, "proc_${inFile}_${dateStr}.xml")
 	}
-	
+	/**
+	 * 
+	 * @param inFile name or path of raw Valgrind Lackey output
+	 * @param outFile name or path of output lackeyml file
+	 */
 	lackeyXmlFile(String inFile, String outFile) {
 		processXml(inFile, outFile)
 	}
-	
+	/**
+	 * Writes DTD for lackeyml file and manages processing of raw file -
+	 * calling the appropriate write... method on each line in turn
+	 * @param iFile name or path of the input file
+	 * @param oFile name or path of the output file
+	 */
 	void processXml(String iFile, String oFile)
 	{
 		println "Reading $iFile Writing $oFile"
@@ -64,7 +82,11 @@ class lackeyXmlFile {
 		writer.write("</lackeyml>\n\n")
 		writer.close()	
 	}
-	
+	/**
+	 * Writes out address and size attributes and closes xml element
+	 * @param line
+	 * @param writer
+	 */
 	void writeAddressSize(String line, FileWriter writer)
 	{
 		def aStr = line =~/(\w*),(\w*)$/
@@ -72,24 +94,44 @@ class lackeyXmlFile {
 		writer.write("/>\n")
 	}
 	
+	/**
+	 * Opens an instruction xml element
+	 * @param line
+	 * @param writer
+	 */
 	void writeInstruction(String line, FileWriter writer)
 	{
 		writer.write("<instruction ")
 		writeAddressSize(line, writer)
 	}
 	
+	/**
+	 * Opens a store xml element
+	 * @param line
+	 * @param writer
+	 */
 	void writeStore(String line, FileWriter writer)
 	{
 		writer.write("<store ")
 		writeAddressSize(line, writer)		
 	}
 	
+	/**
+	 * Opens a load xml element
+	 * @param line
+	 * @param writer
+	 */
 	void writeLoad(String line, FileWriter writer)
 	{
 		writer.write("<load ")
 		writeAddressSize(line, writer)
 	}
 	
+	/**
+	 * Opens a modify xml element
+	 * @param line
+	 * @param writer
+	 */
 	void writeModify(String line, FileWriter writer)
 	{
 		writer.write("<modify ")
@@ -97,7 +139,6 @@ class lackeyXmlFile {
 	}
 	
 }
-
 
 def lackeyIn
 if (args.size() == 0)
